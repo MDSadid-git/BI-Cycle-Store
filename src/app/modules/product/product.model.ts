@@ -6,10 +6,12 @@ const productSchema = new Schema<Product>(
       type: String,
       required: true,
       unique: true,
+      trim: true,
     },
     brand: {
       type: String,
       required: true,
+      trim: true,
     },
     price: {
       type: Number,
@@ -18,6 +20,7 @@ const productSchema = new Schema<Product>(
     type: {
       type: String,
       required: true,
+      trim: true,
     },
     description: {
       type: String,
