@@ -4,35 +4,38 @@ const productSchema = new Schema<Product>(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, 'Name is required'],
       unique: true,
       trim: true,
     },
     brand: {
       type: String,
-      required: true,
+      required: [true, 'Brand is required'],
       trim: true,
     },
     price: {
       type: Number,
-      required: true,
+      required: [true, 'Price is required'],
     },
     type: {
       type: String,
-      required: true,
-      trim: true,
+      enum: {
+        values: ['Mountain', 'Road', 'Hybrid', 'BMX', 'Electric'],
+        message: '{VALUE} is not a valid gender',
+      },
+      required: [true, 'Type is required'],
     },
     description: {
       type: String,
-      required: true,
+      required: [true, 'Description is required'],
     },
     quantity: {
       type: Number,
-      required: true,
+      required: [true, 'Quatity is required'],
     },
     inStock: {
       type: Boolean,
-      required: true,
+      required: [true, 'Is stock is required'],
     },
   },
   {
