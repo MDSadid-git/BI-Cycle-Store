@@ -40,6 +40,9 @@ const getSingleBiCylce = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const result = await ProductServices.getSingleProductIntoDB(productId);
+    if (result === false) {
+      res.status(200).json(new ApiError(500, 'Not Found', 'Faild'));
+    }
     res.status(200).json(new ApiResponse(200, result, 'Successfull'));
   } catch (error) {
     res.status(500).json(new ApiError(500, error, 'Faild'));
@@ -56,6 +59,10 @@ const singleBiCylceUpdate = async (req: Request, res: Response) => {
       price,
       quantity,
     );
+    if (result === false) {
+      res.status(500).json(new ApiError(500, 'not found', 'Faild'));
+    }
+
     res.status(200).json(new ApiResponse(200, result, 'Successfull'));
   } catch (error) {
     res.status(500).json(new ApiError(500, error, 'Faild'));

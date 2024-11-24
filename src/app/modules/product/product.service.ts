@@ -17,6 +17,9 @@ const getAllProductIntoDB = async () => {
 // get single Bi Cycle
 const getSingleProductIntoDB = async (productId: string) => {
   const result = await ProductModel.findOne({ _id: productId });
+  if (!result) {
+    return false;
+  }
   return result;
 };
 
@@ -37,6 +40,9 @@ const singleProductUpdateIntoDB = async (
     },
     { new: true },
   );
+  if (!result) {
+    return false;
+  }
   return result;
 };
 
