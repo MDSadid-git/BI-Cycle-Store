@@ -19,8 +19,6 @@ const createBiCycle = async (req: Request, res: Response) => {
       message: `${result.name} is Create Successfully`,
       data: result,
     });
-
-    res.status(200).json(new ApiResponse(200, result, 'Successfull'));
   } catch (error) {
     res.status(500).json(new ApiError(500, error, 'Faild'));
   }
