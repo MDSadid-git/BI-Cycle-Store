@@ -29,7 +29,11 @@ const createBiCycle = async (req: Request, res: Response) => {
 const getAllBiCycle = async (req: Request, res: Response) => {
   try {
     const result = await ProductServices.getAllProductIntoDB();
-    res.status(200).json(new ApiResponse(200, result, 'Successfull'));
+    if (result.length === 0) {
+      res.status(500).json(new ApiError(500, 'Empty data', 'faild'));
+    } else {
+      res.status(200).json(new ApiResponse(200, result, 'Successfull'));
+    }
   } catch (error) {
     res.status(500).json(new ApiError(500, error, 'Faild'));
   }
