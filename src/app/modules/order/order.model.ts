@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, connect } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import { Order } from './order.interface';
 const OrderSchema = new Schema<Order>(
   {
